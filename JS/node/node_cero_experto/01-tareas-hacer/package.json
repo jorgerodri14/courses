@@ -1,0 +1,24 @@
+{
+  "name": "01-tareas-hacer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node app.ts",
+    "dev": "nodemon app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0"
+
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "@types/node": "^18.11.0"
+  }
+}
