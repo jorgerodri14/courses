@@ -26,13 +26,13 @@ export const showMenu = (): Promise<string> => {
 };
 
 export const pausa = () => {
-  return new Promise(resolve=>{
+  return new Promise(resolve => {
     readlineConsole({
       question: `\nPresione ${"ENTER".yellow} para continuar\n`,
       cb: ({ readline, opt }) => {
         readline.close();
         resolve(opt)
       },
-    });  
+    });
   })
 };

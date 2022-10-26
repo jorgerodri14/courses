@@ -1,15 +1,25 @@
-import { Answers } from "inquirer";
-import { inquirerMenu } from "./helpers/inqueFake";
-
+import { inquirerMenu, pause } from "./helpers/inquire";
+import { Task } from "./models/task";
+import { Tasks } from "./models/tasks";
 const main = async () => {
-  let opt: Answers = {};
+  let opcion = "";
 
-    opt = await inquirerMenu();
+  do {
+    try {
+      opcion = await inquirerMenu();
 
-    console.log('opt-->', opt)
+      console.log('opt-->', opcion)
 
-  
+      await pause()
+
+
+
+    } catch (e) {
+      console.log(e);
+    }
+  } while (opcion !== "7");
 };
 
 console.clear();
+
 main();
