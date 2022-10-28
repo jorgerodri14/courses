@@ -1,6 +1,4 @@
 import { inquirerMenu, pause } from "./helpers/inquire";
-import { Task } from "./models/task";
-import { Tasks } from "./models/tasks";
 const main = async () => {
   let opcion = "";
 
