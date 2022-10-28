@@ -10,6 +10,7 @@ export class Task {
     this.completed = null;
   }
 
-
-
+  public get taskId(): string {
+    return this.id
+  }
 }
