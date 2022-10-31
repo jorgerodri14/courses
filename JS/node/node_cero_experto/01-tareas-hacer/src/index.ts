@@ -6,12 +6,7 @@ const main = async () => {
     try {
       opcion = await inquirerMenu();
 
-      console.log('opt-->', opcion)
-
-      await pause()
-
-
-
+      await pause();
     } catch (e) {
       console.log(e);
     }
