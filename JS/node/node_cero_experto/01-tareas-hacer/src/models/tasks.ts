@@ -2,6 +2,7 @@ import { writeFile } from "node:fs/promises";
 import fs from "fs";
 import { Task } from "./task";
 import "colors";
+
 type List = {
   [k: Task["id"]]: Task;
 };
@@ -9,7 +10,7 @@ type List = {
 export class Tasks {
   private dir = "./data";
   private file = "tasks.json";
-  constructor(private list: {}) {}
+  constructor(private list = {}) {}
 
   public async crearTarea(description: string) {
     try {
@@ -21,9 +22,11 @@ export class Tasks {
         fs.mkdirSync(this.dir);
       }
 
-      await writeFile(this.dir + this.file, JSON.stringify(this.list));
+      await writeFile(this.dir + "/" + this.file, JSON.stringify(this.list));
     } catch (err) {
-      console.log(err.message.red);
+      console.log("Error");
     }
   }
 }
+
+export const tasks = new Tasks();

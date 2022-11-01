@@ -1,5 +1,6 @@
 import inquirer, { type QuestionCollection } from "inquirer";
 import "colors";
+import { ActionsTaskEnum } from "../provider/actionTask";
 
 const menuOptions: QuestionCollection = [
   {
@@ -8,7 +9,7 @@ const menuOptions: QuestionCollection = [
     message: "¿Que desea hacer?",
     choices: [
       {
-        value: "1",
+        value: ActionsTaskEnum.CREATE_TASK,
         name: "1. Crear tarea",
       },
       {
@@ -33,8 +34,8 @@ const menuOptions: QuestionCollection = [
       },
       {
         value: "7",
-        name: "7. Salir"
-      }
+        name: "7. Salir",
+      },
     ],
   },
 ];
@@ -53,12 +54,10 @@ export const pauseInput: QuestionCollection = {
   type: "input",
   name: "pause",
   message: `\nPresione ${"ENTER".yellow} para continuar\n`,
-}
+};
 
 export const pause = async () => {
-
   const { advance } = await inquirer.prompt(pauseInput);
 
-  return advance
-
-}
+  return advance;
+};
