@@ -2,7 +2,7 @@ import { Answers } from "inquirer";
 import { ActionEnum } from "../actions/types";
 
 export interface ManagerProvider {
-  action: (type: ActionEnum) => void;
+  action: (type: ActionEnum) => Promise<void>;
 }
 
 export interface ManagerActionProvider {
