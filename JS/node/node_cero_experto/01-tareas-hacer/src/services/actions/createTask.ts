@@ -1,13 +1,11 @@
-import {
-  CreateActionTaskProvider,
-  ManagerActionProvider,
-} from "../provider/actionTask";
-import { managerReadInput } from "./managerCreateTask";
-import { tasks, Tasks } from "./tasks";
+import { managerReadInput } from "../manager/managerReadInput";
+import { tasks, Tasks } from "../../models/tasks";
+import { ManagerActionProvider } from "../manager/provider";
+import { ActionCommand } from "./types";
 
-class CreateActionTask implements CreateActionTaskProvider {
+export class CreateActionTask implements ActionCommand {
   constructor(private manager: ManagerActionProvider, private tasks: Tasks) {}
-  async create() {
+  async execute() {
     const { description } = await this.manager.readInput({
       message: "",
       name: "description",

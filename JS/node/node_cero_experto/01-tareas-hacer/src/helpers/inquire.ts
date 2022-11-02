@@ -1,6 +1,6 @@
 import inquirer, { type QuestionCollection } from "inquirer";
 import "colors";
-import { ActionsTaskEnum } from "../provider/actionTask";
+import { ActionEnum } from "../services/actions/types";
 
 const menuOptions: QuestionCollection = [
   {
@@ -9,7 +9,7 @@ const menuOptions: QuestionCollection = [
     message: "¿Que desea hacer?",
     choices: [
       {
-        value: ActionsTaskEnum.CREATE_TASK,
+        value: ActionEnum.CREATE_TASK,
         name: "1. Crear tarea",
       },
       {

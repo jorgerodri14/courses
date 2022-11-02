@@ -1,5 +1,5 @@
 import inquirer, { type QuestionCollection } from "inquirer";
-import { ManagerActionProvider } from "../provider/actionTask";
+import { ManagerActionProvider } from "./provider";
 
 class ManagerReadInput implements ManagerActionProvider {
   async readInput({ message, name }: { message: string; name: string }) {
