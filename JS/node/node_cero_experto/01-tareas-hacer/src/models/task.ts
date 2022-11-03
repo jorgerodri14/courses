@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+
 export class Task {
   private id: string;
   private completed: string | null;
@@ -9,7 +10,7 @@ export class Task {
     this.completed = null;
   }
 
-  public get taskId(): string {
+  get taskId(): string {
     return this.id;
   }
 }

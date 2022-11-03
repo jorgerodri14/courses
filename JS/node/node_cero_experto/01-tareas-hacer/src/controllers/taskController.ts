@@ -1,18 +1,18 @@
 import { writeFile } from "node:fs/promises";
 import fs from "fs";
-import { Task } from "./task";
 import "colors";
+import { Task } from "../models/task";
 
 type List = {
   [k: Task["id"]]: Task;
 };
 
-export class Tasks {
+export class TaskController {
   private dir = "./data";
   private file = "tasks.json";
   constructor(private list = {}) {}
 
-  public async crearTarea(description: string) {
+  public async createTask(description: string) {
     try {
       const tarea = new Task(description);
 
@@ -29,4 +29,4 @@ export class Tasks {
   }
 }
 
-export const tasks = new Tasks();
+export const tasks = new TaskController();

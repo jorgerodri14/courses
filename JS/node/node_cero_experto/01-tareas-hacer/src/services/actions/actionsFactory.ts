@@ -1,4 +1,4 @@
-import { createActionTask } from "./createTask";
+import { createTaskAction } from "./createTaskAction";
 import { ActionEnum, ActionsCollect, IActionFactory } from "./types";
 
 class ActionFactory implements IActionFactory {
@@ -9,7 +9,7 @@ class ActionFactory implements IActionFactory {
 }
 
 const actions: ActionsCollect = {
-  [ActionEnum.CREATE_TASK]: createActionTask,
+  [ActionEnum.CREATE_TASK]: createTaskAction,
 };
 
 export const actionFactory = new ActionFactory(actions);
