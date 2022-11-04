@@ -13,8 +13,6 @@ export class TaskController {
   private path = this.dir + "/" + this.file;
   private list: List | null = null;
 
-  constructor() {}
-
   public async createTask(description: string) {
     try {
       const existPath = fs.existsSync(this.path);
