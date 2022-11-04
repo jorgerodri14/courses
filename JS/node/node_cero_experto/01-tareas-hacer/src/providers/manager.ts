@@ -1,5 +1,5 @@
 import { Answers } from "inquirer";
-import { ActionEnum } from "../actions/types";
+import { ActionEnum } from "./actions";
 
 export interface ManagerProvider {
   action: (type: ActionEnum) => Promise<void>;

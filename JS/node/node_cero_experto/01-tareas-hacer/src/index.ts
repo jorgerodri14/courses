@@ -1,5 +1,5 @@
 import { inquirerMenu, pause } from "./helpers/inquire";
-import { ActionEnum } from "./services/actions/types";
+import { ActionEnum } from "./providers/actions";
 import { manager } from "./services/manager/manager";
 const main = async () => {
   let opcion = "";
