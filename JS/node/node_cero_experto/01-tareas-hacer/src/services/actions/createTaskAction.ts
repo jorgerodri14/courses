@@ -1,14 +1,14 @@
 import { tasks, TaskController } from "../../controllers/taskController";
+import { ActionCommandProvider } from "../../providers/actions";
+import { ManagerActionProvider } from "../../providers/manager";
 import { managerReadInput } from "../manager/managerReadInput";
-import { ManagerActionProvider } from "../manager/provider";
-import { ActionCommand } from "./types";
 
-export class CreateTaskAction implements ActionCommand {
+export class CreateTaskAction implements ActionCommandProvider {
   constructor(
     private manager: ManagerActionProvider,
     private tasks: TaskController
   ) {}
-  async execute() {
+  public async execute() {
     const { description } = await this.manager.readInput({
       message: "",
       name: "description",

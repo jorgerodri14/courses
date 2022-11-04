@@ -15,16 +15,11 @@ export class TaskController {
 
   public async createTask(description: string) {
     try {
-      const existPath = fs.existsSync(this.path);
-
-      if (existPath && !this.list) {
-        const list = await readFile(this.path, {
-          encoding: "utf8",
-        });
-        this.list = JSON.parse(list);
+      if (this.existPath && !this.list) {
+        this.list = await this.retriveTasks();
       }
 
-      if (!existPath) {
+      if (!this.existPath) {
         fs.mkdirSync(this.dir);
       }
 
@@ -38,6 +33,30 @@ export class TaskController {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  public async listTasks() {
+    try {
+      if (this.existPath) {
+        const list = await this.retriveTasks();
+        console.log(list);
+        return;
+      }
+      console.log("Lista vacía");
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  private async retriveTasks() {
+    const list = await readFile(this.path, {
+      encoding: "utf8",
+    });
+    return JSON.parse(list);
+  }
+
+  private get existPath() {
+    return fs.existsSync(this.path);
   }
 }
 

@@ -3,6 +3,7 @@ import { ActionEnum } from "./services/actions/types";
 import { manager } from "./services/manager/manager";
 const main = async () => {
   let opcion = "";
+
   do {
     try {
       opcion = await inquirerMenu();
