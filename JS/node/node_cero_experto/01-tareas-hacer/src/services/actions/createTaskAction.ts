@@ -13,7 +13,7 @@ export class CreateTaskAction implements ActionCommand {
       message: "",
       name: "description",
     });
-    this.tasks.createTask(description);
+    await this.tasks.createTask(description);
   }
 }
 

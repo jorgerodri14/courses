@@ -1,4 +1,4 @@
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import fs from "fs";
 import "colors";
 import { Task } from "../models/task";
@@ -10,21 +10,35 @@ type List = {
 export class TaskController {
   private dir = "./data";
   private file = "tasks.json";
-  constructor(private list = {}) {}
+  private path = this.dir + "/" + this.file;
+  private list: List | null = null;
+
+  constructor() {}
 
   public async createTask(description: string) {
     try {
-      const tarea = new Task(description);
+      const existPath = fs.existsSync(this.path);
 
-      this.list = { ...this.list, [tarea.taskId]: tarea };
+      if (existPath && !this.list) {
+        const list = await readFile(this.path, {
+          encoding: "utf8",
+        });
+        this.list = JSON.parse(list);
+      }
 
-      if (!fs.existsSync(this.dir)) {
+      if (!existPath) {
         fs.mkdirSync(this.dir);
       }
 
-      await writeFile(this.dir + "/" + this.file, JSON.stringify(this.list));
+      const tarea = new Task(description);
+
+      this.list = this.list
+        ? { ...this.list, [tarea.taskId]: tarea }
+        : { [tarea.taskId]: tarea };
+
+      await writeFile(this.path, JSON.stringify(this.list));
     } catch (err) {
-      console.log("Error");
+      console.log(err);
     }
   }
 }
