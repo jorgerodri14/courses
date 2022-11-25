@@ -11,7 +11,7 @@ export class Tasks {
   private dir = "./data";
   private file = "tasks.json";
   constructor(private list = {}) {}
-
+  
   public async crearTarea(description: string) {
     try {
       const tarea = new Task(description);
